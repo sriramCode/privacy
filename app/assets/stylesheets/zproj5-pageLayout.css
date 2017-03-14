@@ -1,0 +1,356 @@
+
+.addTask input{
+  height: 70px;
+  border: 2px solid #d7d7d2;
+}
+
+.createdTasks .taskname{
+  min-height: 50px;;
+  width: 230px;
+}
+
+.createdTasks .submitBtn{
+  width: 50px;
+  height: 50px;
+}
+.projectEdit{
+  font-size: 15px;
+}
+/*.project-heading{
+  width: 10%;
+}*/
+.user-photo {
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 15px;
+}
+.list-group{
+  width: 300px;
+  margin-top: 20px;
+  position: absolute;
+  overflow-y: auto;
+  max-height: 200px;
+}
+.user-search .list-group-item.active .text-primary {
+    color: #fff;
+}
+.user-search .list-group-item.active .text-muted {
+    color: #ccc;
+}
+.user-search:hover {
+    cursor: pointer;
+}
+.menu-highlighted {
+    font-weight: bold;
+}
+
+
+.completedtasks-title .taskname{
+  min-height: 50px;;
+  width: 280px;
+}
+
+.completedtasks-title .submitBtn{
+  width: 50px;
+  height: 50px;
+}
+
+.addTask button{
+  height: 70px;
+  width: 70px;
+}
+
+.daysoftasks{  
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.alignleft{
+  float: left;
+}
+
+.alignright{
+  float: right;
+}
+
+#day1, #day2, #day3, #day4, #day5{
+  padding-left: 10px;
+  padding-top: 10px;
+  min-height: 200px;
+  max-height: 370px;
+  overflow-y: auto;
+}
+
+.panel
+{
+   background: #fff;
+   box-shadow: none;
+   border: 0;
+}
+ .panel a
+ {
+  text-decoration: none;
+ }
+
+.menu-panel
+{
+  background: #fefeef;
+}
+
+.panel-body{
+  overflow-y: auto;
+  height: 120px;
+  padding:0px 0px 0px 10px;
+}
+
+
+i.fa-sidemenu{
+  float: right;
+  padding-right:6px;
+  padding-top: 3px;
+}
+
+.side-nav a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.fa-collapsiblehref{
+ margin: 0;
+ padding:5px;
+ border: 0;
+}
+
+.a-hover:hover{
+    color: #000;
+    background: #a8ddef;
+}
+ 
+ .addProject a
+ {
+  padding:0;
+ }
+
+.projectModal
+{
+    padding-top: 10%;
+}
+
+.memberModal
+{
+    padding-top: 10%;
+}
+
+.memberSelect
+{
+  width: 568px;
+}
+
+.addProject
+{
+  color: #818181;
+  padding:10px 10px 0px 25px;
+}
+
+.addMember
+{
+  color: #818181; 
+  padding:10px 10px 0px 25px;
+}
+
+.side-nav {
+   padding: 20px 0px 0px 0px;
+}
+.menubar
+{
+  margin:0px;
+  border:0px;
+  background: #fefeef;
+  font-size: 14px;
+  /*width: 205px;*/
+  /*float: left;*/
+  font-family:Tahoma, Geneva, sans-serif;
+  position: static;
+  height: 120vh;
+}
+
+.container-class
+{
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  /*width: 1521px;*/
+  background: #fefeef;
+}
+
+.row
+{
+  margin:0px;
+}
+
+.project-task
+{
+  margin:0px;
+  padding: 0px;
+  border: 0px;
+}
+
+#project-content
+{
+  padding: 60px 10px 10px 20px;
+  background:#fff;
+ /* width: 785.5px;*/
+  /*float: left;*/
+  height: 100vh;
+  box-shadow: inset 10px 0px 5px 0px rgba(222,218,222,0.25);
+}
+
+.addTask-row{
+  font-size: 18px;
+  padding-top: 10px;
+}
+
+
+#add-task-content
+{
+  background:#fefeef;
+  /*width: 530.5px;*/
+  /*float: left;*/
+  height: 100vh;
+  padding:60px 10px 42px 20px;
+  box-shadow: inset 10px 0px 5px 0px rgba(222,218,222,0.25);
+}
+
+.addedTask
+{
+  overflow-y: auto;
+  height: 60vh;
+}
+
+.drag-task
+{
+  overflow-y: auto;
+  height: 585px;
+}
+
+.todo
+{
+  margin-bottom: 10px;
+}
+
+/*.task-input
+{
+  margin-bottom: 2px;
+}*/
+
+.h4-tag
+{
+  font-size: 16px;
+}
+
+.project-title
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  /*width: 1316px;*/
+  /*margin-left: 205px;*/
+  background: transparent;
+  z-index: 999;
+  padding: 0px 0px 10px 20px;
+  border-bottom: 3px solid #ffa500;
+}
+
+.project-task
+{
+  position: relative;
+}
+
+.addspace
+{
+  height: 60px;
+  max-width: 200px;
+}
+
+.addspace img
+{
+  width: 50px;
+  height: 45px;
+}
+
+.addspace #divBtn
+{
+  float: right;
+}
+
+ .input-btn
+ {
+  border: 2px solid #d7d7d2;
+  background: transparent;
+ }
+
+html
+{
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+#logout-menubar
+{
+  /*margin-top: 245px;*/
+
+}
+
+ .form-focus:focus
+ {
+  border:2px solid #d7d7d2;
+  box-shadow:none;
+ }
+
+ .btn:hover
+ {
+  background: #fff;
+ }
+
+ .btn:focus
+ {
+  background:#fff;
+ }
+
+ .btn:active
+ {
+  background: #fff;
+ }
+
+.submitBtn
+ {
+  border: 2px solid #d7d7d2;
+  background:#fff;
+ }
+
+ .fa
+ {
+  color:#818181;
+ }
+
+.taskname
+{
+  border: 2px solid #d7d7d2;
+}
+
+#corners
+{
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.menubar-panel
+{
+  margin-bottom: 0px;
+}

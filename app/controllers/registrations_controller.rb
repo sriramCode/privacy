@@ -5,7 +5,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def create
-    binding.pry
       if User.where(:email => params['user']['email']).present?
         flash[:email] = "Email already registered. Please sign-up with different email" 
         redirect_to action: "new"

@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: rootrootrootroot
+  password: root
 
 development:
   <<: *default
@@ -48,6 +48,6 @@ test:
 #
 production:
   <<: *default
-  database: pro_task5v2_production
+  database: project
   username: pro_task5v2
   password: <%= ENV['PRO_TASK5V2_DATABASE_PASSWORD'] %>

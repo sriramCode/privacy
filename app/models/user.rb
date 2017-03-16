@@ -21,7 +21,8 @@ class User < ApplicationRecord
   has_and_belongs_to_many :images
   has_and_belongs_to_many :posts
   has_many :posted, :through => :posts
-
+  has_many :images, as: :imageable, :dependent => :destroy
+  has_many :owners, :through => :images
 
  
 end

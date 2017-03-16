@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post 'accept_friend'
     post 'set_privacy'
     post 'add_post'
+    post 'add_image'
   end
 end
 

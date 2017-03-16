@@ -558,7 +558,11 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
              $scope.user = response.data.current_user;
              $scope.friends = response.data.friends;
              $scope.requests = response.data.requests;
-             console.log(response);
+             $scope.images = response.data.images;
+             $scope.posts = response.data.posts
+
+
+              console.log(response.data);
              for (var i = 0; i < $scope.friends.length; i++) {
                 $scope.items.push({
                     username: $scope.friends[i].username,
@@ -617,11 +621,13 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
     }
     $scope.getPeopleText = function (item) {
         $scope.assignedUser.push(item.email);
-        console.log($scope.assignedUser);
+        // console.log($scope.assignedUser);
         return '@' + item.username + '';
     };
-    $scope.addCall = function() {
-             var taskTemp = $scope.addTask;
+    $scope.addCall = function(file) {
+
+        var taskTemp = $scope.addTask;
+        console.log(file);
         var startindex = 0;
         var taskSubstring = "";
         var taskSubstringlen = 0;
@@ -660,7 +666,7 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
                 }
             }
         }
-        console.log($scope.assignedUser);
+        // console.log($scope.assignedUser);
         var data = $.param({
          assignedUser : $scope.assignedUser,
          post : taskTemp

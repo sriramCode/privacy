@@ -559,10 +559,8 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
              $scope.friends = response.data.friends;
              $scope.requests = response.data.requests;
              $scope.images = response.data.images;
-             $scope.posts = response.data.posts
-
-
-              console.log(response.data);
+             $scope.posts = JSON.parse(response.data.posts);
+             $scope.permissions = JSON.parse(response.data.permissions);     
              for (var i = 0; i < $scope.friends.length; i++) {
                 $scope.items.push({
                     username: $scope.friends[i].username,
@@ -571,7 +569,7 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
                     email: $scope.friends[i].email
                 });
             }
-            console.log($scope.items)
+            
 
         });
 
@@ -606,6 +604,20 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
         });
     }
 
+    $scope.approve = function(x) {
+        var data = $.param({
+        permission_id : x 
+        });
+        var config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+        $http.post('/homes/approve', data, config).then(function (response) {
+          $scope.initProjModal(); 
+        });
+    }
+
     $scope.setPrivacy = function(x) {
         var data = $.param({
         privacy : $scope.privacy 
@@ -620,14 +632,16 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
         });
     }
     $scope.getPeopleText = function (item) {
+
         $scope.assignedUser.push(item.email);
-        // console.log($scope.assignedUser);
+        console.log($scope.assignedUser);
         return '@' + item.username + '';
     };
-    $scope.addCall = function(file) {
+    
 
-        var taskTemp = $scope.addTask;
-        console.log(file);
+    $scope.addPost = function() {
+
+        var taskTemp = $scope.addP;
         var startindex = 0;
         var taskSubstring = "";
         var taskSubstringlen = 0;
@@ -666,7 +680,7 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
                 }
             }
         }
-        // console.log($scope.assignedUser);
+
         var data = $.param({
          assignedUser : $scope.assignedUser,
          post : taskTemp
@@ -676,8 +690,11 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         };
+        $scope.assignedUser = [];
+        $scope.addP = "";
         $http.post('/homes/add_post', data, config).then(function (response) {
           $scope.initProjModal(); 
+
         });
     }
 

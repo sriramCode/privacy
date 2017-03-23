@@ -12,20 +12,35 @@ class HomesController < ApplicationController
 		current_user.inverse_friendships.where(:status => 'pending').each do |req|
 			requests << User.find(req.user_id)  
 		end  
+		permissions = Permission.where(:user_id => current_user.id,:status => "no")
 		posts = []
 		images = []
 		
 		friends.each do |p|
 			Post.where(:posted_id => p.id).each do |o|
-				posts << o
+				if Permission.find_by(:post_id => o.id) != nil
+					check = Permission.where(:post_id => o.id)
+					status = true
+					check.each do |c|
+						if c.status == "no"
+							status = false
+						end
+					end
+					if status
+						posts << o
+					end
+				else
+					posts << o
+				end
 			end
 			Image.where(:imageable_id => p.id).each do |o|
 				images << o
 			end
 		end
+		posts = posts.to_json(:include => :posted)
+		permissions = permissions.to_json(:include => {:post =>{:include => :posted}})
 
-
-		render json: {addFriends: addFriends, current_user: current_user, friends: friends, requests: requests, posts: posts,images: images}
+		render json: {addFriends: addFriends, current_user: current_user, friends: friends, requests: requests, posts: posts,images: images, permissions: permissions}
 	end
 
 	def add_friend
@@ -43,12 +58,33 @@ class HomesController < ApplicationController
 	def add_post
 		post = Post.create(:posted_id => current_user.id,:post => params['post'])
 		params['assignedUser'].each do |user|
-   			post.users << User.find_by(:email => user)
+			if current_user.privacy == "all"
+				if User.find_by(:email => user).privacy == "friends"
+   					post.users << User.find_by(:email => user)
+   					Permission.create(:user_id => User.find_by(:email => user).id, :post_id => post.id, :status => "no")
+   				end
+   				if User.find_by(:email => user).privacy == "me"
+   					post.users << User.find_by(:email => user)
+   					Permission.create(:user_id => User.find_by(:email => user).id, :post_id => post.id, :status => "no")
+   				end
+   			end
+
+   			if current_user.privacy == "friends"
+   				if User.find_by(:email => user).privacy == "friends"
+   					post.users << User.find_by(:email => user)
+   					Permission.create(:user_id => User.find_by(:email => user).id, :post_id => post.id, :status => "no")
+   				end
+   				if User.find_by(:email => user).privacy == "me"
+   					post.users << User.find_by(:email => user)
+   					Permission.create(:user_id => User.find_by(:email => user).id, :post_id => post.id, :status => "no")
+   				end
+   			end
 		end 
 	end
 
-	def add_image
-		binding.pry
+	def approve
+		Permission.find(params['permission_id']).update(:status => "yes")
 	end
+
 
 end

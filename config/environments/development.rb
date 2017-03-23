@@ -53,8 +53,8 @@ Rails.application.configure do
     port: 587,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "sriram@codingmart.com",
-    password: "oneBillionU222"
+    user_name: "noreplyproj5@gmail.com",
+    password: "codingmart1234"
   }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

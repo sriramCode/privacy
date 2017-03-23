@@ -1,0 +1,31 @@
+
+[1mFrom:[0m /home/codingmart/Desktop/project/privacy/app/controllers/homes_controller.rb @ line 30 HomesController#get:
+
+     [1;34m8[0m: [32mdef[0m [1;34mget[0m
+     [1;34m9[0m: 	addFriends = [1;34;4mUser[0m.all - (current_user.friends + current_user.inverse_friends) - [current_user]
+    [1;34m10[0m: 	friends = current_user.friends + current_user.inverse_friends
+    [1;34m11[0m: 	requests = []
+    [1;34m12[0m: 	current_user.inverse_friendships.where([33m:status[0m => [31m[1;31m'[0m[31mpending[1;31m'[0m[31m[0m).each [32mdo[0m |req|
+    [1;34m13[0m: 		requests << [1;34;4mUser[0m.find(req.user_id)  
+    [1;34m14[0m: 	[32mend[0m  
+    [1;34m15[0m: 
+    [1;34m16[0m: 	permissions = [1;34;4mPermission[0m.where([33m:user_id[0m => current_user.id,[33m:status[0m => [31m[1;31m"[0m[31mno[1;31m"[0m[31m[0m)
+    [1;34m17[0m: 
+    [1;34m18[0m: 	posts = []
+    [1;34m19[0m: 	images = []
+    [1;34m20[0m: 
+    [1;34m21[0m: 	friends.each [32mdo[0m |p|
+    [1;34m22[0m: 		[1;34;4mPost[0m.where([33m:posted_id[0m => p.id).each [32mdo[0m |o|
+    [1;34m23[0m: 			posts << o
+    [1;34m24[0m: 		[32mend[0m
+    [1;34m25[0m: 		[1;34;4mImage[0m.where([33m:imageable_id[0m => p.id).each [32mdo[0m |o|
+    [1;34m26[0m: 			images << o
+    [1;34m27[0m: 		[32mend[0m
+    [1;34m28[0m: 	[32mend[0m
+    [1;34m29[0m: 	posts = posts.to_json([33m:include[0m => [33m:users[0m)
+ => [1;34m30[0m: 	binding.pry
+    [1;34m31[0m: 	permissions = permissions.to_json([33m:include[0m => {[33m:post[0m =>{[33m:include[0m => [33m:users[0m}})
+    [1;34m32[0m: 
+    [1;34m33[0m: 	render [35mjson[0m: {[35maddFriends[0m: addFriends, [35mcurrent_user[0m: current_user, [35mfriends[0m: friends, [35mrequests[0m: requests, [35mposts[0m: posts,[35mimages[0m: images, [35mpermissions[0m: permissions}
+    [1;34m34[0m: [32mend[0m
+

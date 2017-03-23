@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     post 'set_privacy'
     post 'add_post'
     post 'add_image'
+    post 'approve'
   end
 end
 

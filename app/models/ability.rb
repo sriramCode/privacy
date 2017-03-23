@@ -6,7 +6,7 @@ class Ability
     alias_action :create, :read, :update, :destroy, :to => :crud
     can :access, :rails_admin   # grant access to rails_admin
     can :dashboard              # grant access to the dashboard
-    can :crud, [Invitation,User,Friendship,Image,Post]
+    can :crud, [Invitation,User,Friendship,Image,Post,Permission]
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

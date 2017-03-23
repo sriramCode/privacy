@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
 
 	def create
-		binding.pry
+		 current_user.images.create(:avatar => params['image']['avatar'],:owner_id => current_user.id)
 	end
   
 end

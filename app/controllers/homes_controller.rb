@@ -34,9 +34,23 @@ class HomesController < ApplicationController
 				end
 			end
 			Image.where(:imageable_id => p.id).each do |o|
-				images << o
+				if Permission.find_by(:image_id => o.id) != nil
+					check = Permission.where(:image_id => o.id)
+					status = true
+					check.each do |c|
+						if c.status == "no"
+							status = false
+						end
+					end
+					if status
+						images << o
+					end
+				else
+					images << o
+				end
 			end
 		end
+		images = images.to_json(:include => :owner)
 		posts = posts.to_json(:include => :posted)
 		permissions = permissions.to_json(:include => {:post =>{:include => :posted}})
 

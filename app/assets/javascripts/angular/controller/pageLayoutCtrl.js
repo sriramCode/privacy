@@ -558,7 +558,7 @@ app.controller('pageLayoutCtrl', function ($scope, $filter, $http) {
              $scope.user = response.data.current_user;
              $scope.friends = response.data.friends;
              $scope.requests = response.data.requests;
-             $scope.images = response.data.images;
+             $scope.images = JSON.parse(response.data.images);
              $scope.posts = JSON.parse(response.data.posts);
              $scope.permissions = JSON.parse(response.data.permissions);     
              for (var i = 0; i < $scope.friends.length; i++) {
